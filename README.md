@@ -1,6 +1,14 @@
 # Cardigan
 A HypeCard clone I'm writing in Svelte. Contributors welcome!
 
+## Dev
+```
+git clone https://github.com/oaklandgit/Cardigan.git
+cd Cardigan
+npm run dev
+http://localhost:5173/
+```
+
 ## What's with the name?
 A play on words. "Card Again" ;-)
 
