@@ -1,4 +1,4 @@
-# Cardigan
+# Cardigan - WORK IN PROGRESS
 A HypeCard clone I'm writing in Svelte. Contributors welcome!
 
 ## Dev
