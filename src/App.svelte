@@ -1,27 +1,24 @@
 <script>
-  import Bak from "./lib/Bak.svelte";
+  import Area from "./lib/Area.svelte";
+  import Menubar from "./lib/Menubar.svelte";
   import Palette from "./lib/Palette.svelte";
+  import Window from "./lib/Window.svelte";
 </script>
 
-<Palette>
-  <p>TITLE</p>
-  <p>BODY</p>
-</Palette>
-
-<Bak pattern={1}>
-  <h1>Hello</h1>
-  <p>The rain in spain</p>
-</Bak>
-
-<Bak pattern={2}>
-  <h1>Hello</h1>
-  <p>The rain in spain</p>
-</Bak>
-
-<Bak pattern={3}>
-  <h1>Hello</h1>
-  <p>The rain in spain</p>
-</Bak>
+<div id="screen">
+  <Menubar />
+  <Area pattern={1} height="600px">
+    <!-- <Window>
+      <textarea>Hello</textarea>
+    </Window> -->
+  </Area>
+</div>
 
 <style>
+  div#screen {
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    padding: 2px;
+  }
 </style>
