@@ -9,14 +9,14 @@
 <Area pattern={2}>
   <MyBackground cardId={0} />
   <Menubar />
-  <Palette>
+  <!-- <Palette>
     <p>Hello</p>
-  </Palette>
+  </Palette> -->
 </Area>
 
-<Modal title="hello">
+<!-- <Modal title="hello">
   <p>Gello</p>
-</Modal>
+</Modal> -->
 
 <style>
 </style>
