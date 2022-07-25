@@ -9,6 +9,7 @@ A HyperCard clone I'm writing in Svelte. Contributors welcome!
 ```
 git clone https://github.com/oaklandgit/Cardigan.git
 cd Cardigan
+npm install
 npm run dev
 http://localhost:5173/
 ```
