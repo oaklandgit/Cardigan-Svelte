@@ -1,20 +1,20 @@
 <script>
     export let pattern = 3;
-    export let height = "320px";
+    export let height = 600;
 </script>
 
 <div
-    style="height: {height}; background-image: url(/assets/patterns/{pattern}.svg"
+    style="height: {height}px; background-image: url(/assets/patterns/{pattern}.svg"
 >
     <slot />
 </div>
 
 <style>
     div {
+        position: relative;
         background-size: 6px;
         background-position: top left;
         background-repeat: repeat;
-        padding: 16px;
         background-color: white;
     }
 </style>
