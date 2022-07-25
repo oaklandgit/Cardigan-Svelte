@@ -1,8 +1,8 @@
 <script>
-  import Area from "./lib/Area.svelte";
-  import MyBackground from "./lib/MyBackground.svelte";
-  import Menubar from "./lib/Menubar.svelte";
-  import Palette from "./lib/Palette.svelte";
+  import Area from "./ui/Area.svelte";
+  import Menubar from "./ui/Menubar.svelte";
+  import Palette from "./ui/Palette.svelte";
+  import MyBackground from "./widgets/MyBackground.svelte";
 </script>
 
 <Area pattern={2}>

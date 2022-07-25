@@ -2,9 +2,10 @@
     import MenuItem from "./MenuItem.svelte";
     import Menu from "./Menu.svelte";
     import ToolSet from "./ToolSet.svelte";
-    import MyButton from "./MyButton.svelte";
-    import MyField from "./MyField.svelte";
-    import { myStack } from "./stores";
+
+    import MyButton from "../widgets/MyButton.svelte";
+    import MyField from "../widgets/MyField.svelte";
+    import { myStack } from "../stores";
 
     function createButton() {
         $myStack = [

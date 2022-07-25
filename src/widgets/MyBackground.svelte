@@ -1,5 +1,5 @@
 <script>
-    import { myStack } from "./stores";
+    import { myStack } from "../stores";
 
     export let cardId = 0;
 
