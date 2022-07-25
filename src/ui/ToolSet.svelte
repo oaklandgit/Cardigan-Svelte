@@ -1,12 +1,29 @@
 <script>
     import Tool from "./Tool.svelte";
+    import { appMode } from "../stores";
+
+    function setMode(mode) {
+        $appMode = mode;
+    }
 </script>
 
 <div>
     <div class="toolGroup">
-        <Tool src="/assets/browse.svg" />
-        <Tool src="/assets/button.svg" />
-        <Tool src="/assets/field.svg" />
+        <Tool
+            src="/assets/browse.svg"
+            callback={() => setMode("browse")}
+            selected={$appMode === "browse"}
+        />
+        <Tool
+            src="/assets/button.svg"
+            callback={() => setMode("button")}
+            selected={$appMode === "button"}
+        />
+        <Tool
+            src="/assets/field.svg"
+            callback={() => setMode("field")}
+            selected={$appMode === "field"}
+        />
     </div>
     <div class="toolGroup">
         <Tool src="/assets/marquee.svg" />
