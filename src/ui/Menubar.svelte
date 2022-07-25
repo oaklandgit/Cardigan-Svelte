@@ -5,9 +5,10 @@
 
     import MyButton from "../widgets/MyButton.svelte";
     import MyField from "../widgets/MyField.svelte";
-    import { myStack } from "../stores";
+    import { myStack, appMode } from "../stores";
 
     function createButton() {
+        // create the button, the switch to button mode
         $myStack = [
             ...$myStack,
             {
@@ -19,10 +20,12 @@
                 },
             },
         ];
-        // console.log($myStack);
+
+        $appMode = "button";
     }
 
     function createField() {
+        // create the field, the switch to field mode
         $myStack = [
             ...$myStack,
             {
@@ -35,7 +38,8 @@
                 },
             },
         ];
-        // console.log($myStack);
+
+        $appMode = "field";
     }
 
     export let items = [
