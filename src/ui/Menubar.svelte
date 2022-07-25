@@ -8,16 +8,11 @@
     import { myStack, appMode } from "../stores";
 
     function createButton() {
-        // create the button, the switch to button mode
+        // create the button, then switch to button mode
         $myStack = [
             ...$myStack,
             {
                 element: MyButton,
-                props: {
-                    label: "untitled",
-                    x: 200,
-                    y: 400,
-                },
             },
         ];
 
@@ -25,17 +20,11 @@
     }
 
     function createField() {
-        // create the field, the switch to field mode
+        // create the field, then switch to field mode
         $myStack = [
             ...$myStack,
             {
                 element: MyField,
-                props: {
-                    label: "untitled",
-                    content: "empty",
-                    x: 100,
-                    y: 300,
-                },
             },
         ];
 
