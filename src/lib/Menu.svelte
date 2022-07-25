@@ -8,11 +8,11 @@
 </script>
 
 <ul class="menu">
-    {#each items as { label, shortcut, section, disabled }}
+    {#each items as { label, shortcut, section, disabled, callback }}
         {#if section}
             <hr />
         {/if}
-        <li class="menuItem" class:disabled>
+        <li class="menuItem" class:disabled on:mouseup={callback}>
             {label}
             {#if shortcut}
                 <span class="shortcut">{shortcut}</span>

@@ -3,6 +3,10 @@
     import Menu from "./Menu.svelte";
     import ToolSet from "./ToolSet.svelte";
 
+    function createButton() {
+        alert("I made a button!");
+    }
+
     export let items = [
         {
             id: "apple",
@@ -26,7 +30,13 @@
                 { label: "Stack Info…" },
                 { label: "Bring Closer", section: true, shortcut: "⌘+" },
                 { label: "Send Farther", shortcut: "⌘-" },
-                { label: "New Button", section: true },
+                {
+                    label: "New Button",
+                    section: true,
+                    callback: () => {
+                        createButton();
+                    },
+                },
                 { label: "New Field" },
                 { label: "New Background" },
             ],

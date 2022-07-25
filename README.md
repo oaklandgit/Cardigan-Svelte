@@ -1,6 +1,10 @@
 # Cardigan - WORK IN PROGRESS
 A HypeCard clone I'm writing in Svelte. Contributors welcome!
 
+## Latest Screenshot
+
+ ![Just getting started](/public/screenshots/day01.png)
+
 ## Dev
 ```
 git clone https://github.com/oaklandgit/Cardigan.git
