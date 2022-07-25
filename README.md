@@ -20,5 +20,5 @@ http://localhost:5173/
 A play on words. "Card Again" 😅
 
 ## Related projects in the wild
-- https://hypercardsimulator.com/
-- https://hypercardadventures.com/
+- [hypercardsimulator.com](https://hypercardsimulator.com/)
+- [hypercardadventures.com](https://hypercardadventures.com/)
