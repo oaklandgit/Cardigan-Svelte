@@ -25,6 +25,7 @@
     .menu {
         list-style: none;
         padding: 0;
+        min-width: 160px;
     }
 
     .menuItem {
@@ -50,7 +51,6 @@
     hr {
         padding: 0;
         margin: 4px 0;
-        border-top: 1px solid lightgrey;
-        border-bottom: 1px solid darkgrey;
+        border-top: 1px dotted black;
     }
 </style>

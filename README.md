@@ -21,3 +21,4 @@ A play on words. "Card Again" 😅
 
 ## Related projects in the wild
 - https://hypercardsimulator.com/
+- https://hypercardadventures.com/

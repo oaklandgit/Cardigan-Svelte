@@ -11,3 +11,12 @@
 >
     {label}
 </button>
+
+<style>
+    button {
+        background-color: white;
+        border: 2px solid black;
+        border-radius: 6px;
+        box-shadow: 2px 2px 0 black;
+    }
+</style>

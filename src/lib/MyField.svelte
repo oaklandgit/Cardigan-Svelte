@@ -13,4 +13,8 @@
 >
 
 <style>
+    textarea {
+        border: 2px solid black;
+        resize: none;
+    }
 </style>
