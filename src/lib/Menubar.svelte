@@ -18,7 +18,7 @@
                 },
             },
         ];
-        console.log($myStack);
+        // console.log($myStack);
     }
 
     function createField() {
@@ -34,7 +34,7 @@
                 },
             },
         ];
-        console.log($myStack);
+        // console.log($myStack);
     }
 
     export let items = [

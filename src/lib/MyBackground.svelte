@@ -1,7 +1,8 @@
 <script>
     import { myStack } from "./stores";
 
-    // export let id;
+    export let cardId = 0;
+
     export const elements = [];
 </script>
 
