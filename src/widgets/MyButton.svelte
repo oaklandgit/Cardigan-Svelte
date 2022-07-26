@@ -1,5 +1,6 @@
 <script>
     import { appMode } from "../stores";
+
     export let label = "New Button";
     export let x = 200;
     export let y = 200;
@@ -13,7 +14,8 @@
         alert("edit me!");
     }
 
-    // DRAG
+    // MOVE & RESIZE
+
     let moving = false;
     let resizing = false;
     const cornerSize = 12;
