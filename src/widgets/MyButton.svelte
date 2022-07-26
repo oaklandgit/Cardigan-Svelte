@@ -12,18 +12,60 @@
         if (!editable) return;
         alert("edit me!");
     }
+
+    // DRAG
+    let moving = false;
+    let resizing = false;
+    const cornerSize = 12;
+
+    function onLowerRight(e) {
+        if (width - e.offsetX < cornerSize && height - e.offsetY < cornerSize) {
+            return true;
+        }
+    }
+
+    function onMouseDown(e) {
+        if (!editable) return;
+
+        if (onLowerRight(e)) {
+            resizing = true;
+        } else {
+            moving = true;
+        }
+    }
+
+    function onMouseMove(e) {
+        if (moving) {
+            x += e.movementX;
+            y += e.movementY;
+        }
+
+        if (resizing) {
+            width += e.movementX;
+            height += e.movementY;
+        }
+    }
+
+    function onMouseUp() {
+        moving = false;
+        resizing = false;
+    }
 </script>
 
 <button
     on:dblclick={editButton}
+    on:mousedown={onMouseDown}
     class:editable
-    style="position: absolute; top: {x}px; left: {y}px; width: {width}px; height: {height}px"
+    style="left: {x}px; top: {y}px; width: {width}px; height: {height}px"
 >
     {label}
 </button>
 
+<svelte:window on:mouseup={onMouseUp} on:mousemove={onMouseMove} />
+
 <style>
     button {
+        position: absolute;
         background-color: white;
         border: 2px solid black;
         border-radius: 6px;
