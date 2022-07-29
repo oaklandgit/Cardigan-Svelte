@@ -1,15 +1,14 @@
 <script>
-    import { myStack } from "../stores";
+    import { myStack, selectedItems } from "../stores";
     import axios from "axios";
     import { onMount } from "svelte";
     import MyButton from "./MyButton.svelte";
     import MyField from "./MyField.svelte";
-
-    const endpoint = "http://localhost:4000/stack";
+    import { backgroundDB } from "../lib/constants";
 
     onMount(async () => {
         try {
-            const res = await axios.get(endpoint);
+            const res = await axios.get(backgroundDB);
             myStack.update(() => {
                 return res.data;
             });
@@ -20,15 +19,18 @@
 
     // export let cardId = 0;
     // export const elements = [];
+    function deselectAll() {
+        $selectedItems = [];
+    }
 </script>
 
-<div class="background">
+<div class="background" on:mousedown={deselectAll}>
     {#each $myStack as item (item.id)}
         {#if item.element === "button"}
-            <MyButton {...item} />
+            <MyButton {...item} selected={$selectedItems.includes(item.id)} />
         {/if}
         {#if item.element === "field"}
-            <MyField {...item} />
+            <MyField {...item} selected={$selectedItems.includes(item.id)} />
         {/if}
     {/each}
 </div>

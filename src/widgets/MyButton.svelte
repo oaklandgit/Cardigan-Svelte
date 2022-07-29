@@ -1,8 +1,8 @@
 <script>
     import { appMode } from "../stores";
     import { scale } from "svelte/transition";
-    import { myStack } from "../stores";
-    import { endpoint } from "../lib/constants";
+    import { myStack, selectedItems } from "../stores";
+    import { backgroundDB } from "../lib/constants";
     import axios from "axios";
 
     export let id;
@@ -11,6 +11,7 @@
     export let y;
     export let width;
     export let height;
+    export let selected = false;
 
     $: editable = $appMode === "button";
 
@@ -31,8 +32,10 @@
         }
     }
 
-    function onMouseDown(e) {
+    function selectButton(e) {
         if (!editable) return;
+
+        $selectedItems = [id];
 
         if (onLowerRight(e)) {
             resizing = true;
@@ -41,7 +44,7 @@
         }
     }
 
-    function onMouseMove(e) {
+    function dragButton(e) {
         if (moving) {
             x += e.movementX;
             y += e.movementY;
@@ -53,7 +56,7 @@
         }
     }
 
-    function onMouseUp(e) {
+    function releaseButton(e) {
         if (moving || resizing) {
             saveButton();
             updateStore();
@@ -63,7 +66,7 @@
     }
 
     async function saveButton() {
-        await axios.patch(endpoint + id, {
+        await axios.patch(backgroundDB + id, {
             x,
             y,
             width,
@@ -97,14 +100,16 @@
 <button
     transition:scale
     on:dblclick={editButton}
-    on:mousedown={onMouseDown}
+    on:mousedown|stopPropagation={selectButton}
+    on:mouseup={releaseButton}
     class:editable
+    class:selected
     style="left: {x}px; top: {y}px; width: {width}px; height: {height}px"
 >
     {label}
 </button>
 
-<svelte:window on:mouseup={onMouseUp} on:mousemove={onMouseMove} />
+<svelte:window on:mousemove={dragButton} />
 
 <style>
     button {
@@ -117,5 +122,9 @@
 
     button.editable {
         border: 2px dashed black;
+    }
+
+    button.selected {
+        border-color: red;
     }
 </style>

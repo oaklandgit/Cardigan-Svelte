@@ -1,21 +1,30 @@
 <script>
     import { appMode } from "../stores";
+    import { scale } from "svelte/transition";
+    import { myStack, selectedItems } from "../stores";
+    import { backgroundDB } from "../lib/constants";
+    import axios from "axios";
 
-    //export const id = crypto.randomUUID();
-    export let id = null;
-    export let x = 200;
-    export let y = 200;
-    export let width = 400;
-    export let height = 100;
-    export let content = id;
+    export let id;
+    export let content;
+    export let x;
+    export let y;
+    export let width;
+    export let height;
+    export let selected = false;
 
     $: editable = $appMode === "field";
+
+    function editField() {
+        if (!editable) return;
+        alert("edit me!");
+    }
 
     // MOVE & RESIZE
 
     let moving = false;
     let resizing = false;
-    const cornerSize = 20;
+    const cornerSize = 12;
 
     function onLowerRight(e) {
         if (width - e.offsetX < cornerSize && height - e.offsetY < cornerSize) {
@@ -23,8 +32,10 @@
         }
     }
 
-    function onMouseDown(e) {
+    function selectField(e) {
         if (!editable) return;
+
+        $selectedItems = [id];
 
         if (onLowerRight(e)) {
             resizing = true;
@@ -33,7 +44,7 @@
         }
     }
 
-    function onMouseMove(e) {
+    function dragField(e) {
         if (moving) {
             x += e.movementX;
             y += e.movementY;
@@ -45,42 +56,74 @@
         }
     }
 
-    function onMouseUp() {
+    function releaseField(e) {
+        if (moving || resizing) {
+            saveField();
+            updateStore();
+        }
         moving = false;
         resizing = false;
+    }
+
+    async function saveField() {
+        await axios.patch(backgroundDB + id, {
+            x,
+            y,
+            width,
+            height,
+            updated: +new Date(),
+        });
+    }
+
+    function updateStore() {
+        myStack.update((currentStack) => {
+            const i = currentStack.findIndex((items) => items.id === id);
+
+            const updatedStack = [
+                ...currentStack.slice(0, i),
+                {
+                    id,
+                    element: "field",
+                    content,
+                    x,
+                    y,
+                    width,
+                    height,
+                },
+                ...currentStack.slice(i + 1),
+            ];
+            return updatedStack;
+        });
     }
 </script>
 
 <textarea
-    readonly={editable}
+    transition:scale
+    readonly
+    on:dblclick={editField}
+    on:mousedown|stopPropagation={selectField}
+    on:mouseup={releaseField}
     class:editable
-    class:moving
-    class:resizing
-    on:mousedown={onMouseDown}
+    class:selected
     style="left: {x}px; top: {y}px; width: {width}px; height: {height}px"
-    >{content}</textarea
->
+/>
 
-<svelte:window on:mouseup={onMouseUp} on:mousemove={onMouseMove} />
+<svelte:window on:mousemove={dragField} />
 
 <style>
     textarea {
+        position: absolute;
+        background-color: white;
         border: 2px solid black;
         resize: none;
-        position: absolute;
+        outline: none;
     }
 
     textarea.editable {
         border: 2px dashed black;
-        outline: none;
-        cursor: grab;
     }
 
-    textarea.moving {
-        cursor: grabbing;
-    }
-
-    textarea.resizing {
-        cursor: nwse-resize;
+    textarea.selected {
+        border-color: red;
     }
 </style>

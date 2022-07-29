@@ -1,7 +1,8 @@
 import axios from "axios";
 import { myStack } from '../stores';
+import { backgroundDB } from "./constants";
 
-const endpoint = "http://localhost:4000/stack/";
+// const endpoint = "http://localhost:4000/stack/";
 
 export async function createButton() {
 
@@ -17,7 +18,7 @@ export async function createButton() {
         updated: + new Date()
     };
 
-    const response = await axios.post(endpoint, newButton);
+    const response = await axios.post(backgroundDB, newButton);
 
     myStack.update(currentStack => {
         return [...currentStack, newButton];
@@ -30,7 +31,7 @@ export async function createField() {
     const newField = {
         id: crypto.randomUUID(),
         element: "field",
-        content: "empty",
+        content: "Empty",
         x: 100,
         y: 100,
         width: 120,
@@ -39,7 +40,7 @@ export async function createField() {
         updated: + new Date()
     };
 
-    const response = await axios.post(endpoint, newField);
+    const response = await axios.post(backgroundDB, newField);
 
     myStack.update(currentStack => {
         return [...currentStack, newField];

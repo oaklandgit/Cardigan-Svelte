@@ -5,8 +5,22 @@
 
     import MyButton from "../widgets/MyButton.svelte";
     import MyField from "../widgets/MyField.svelte";
-    import { myStack, appMode } from "../stores";
+    import { myStack, appMode, selectedItems } from "../stores";
     import { createButton, createField } from "../lib/crud.js";
+
+    function reorderTo(distance) {
+        alert("reorder");
+        // const i = $myStack.findIndex((item) => {
+        //     return item.id === selectedItems[0];
+        // });
+
+        // $myStack = [
+        //     ...$myStack.slice(0, i - 2),
+        //     ...$myStack[i],
+        //     ...$myStack[i - 1],
+        //     ...$myStack.slice(i + 1, $myStack.length),
+        // ];
+    }
 
     export let items = [
         {
@@ -70,8 +84,21 @@
                 { label: "Card Info…" },
                 { label: "Bkgnd Info…" },
                 { label: "Stack Info…" },
-                { label: "Bring Closer", section: true, shortcut: "⌘+" },
-                { label: "Send Farther", shortcut: "⌘-" },
+                {
+                    label: "Bring Closer",
+                    section: true,
+                    shortcut: "⌘+",
+                    callback: () => {
+                        reorderTo(-1);
+                    },
+                },
+                {
+                    label: "Send Farther",
+                    shortcut: "⌘-",
+                    callback: () => {
+                        reorderTo(1);
+                    },
+                },
                 {
                     label: "New Button",
                     section: true,
