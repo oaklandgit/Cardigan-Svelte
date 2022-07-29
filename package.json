@@ -5,11 +5,16 @@
   "type": "module",
   "description": "A HyperCard clone written in Svelte",
   "author": "Larry Stone",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/oaklandgit/Cardigan.git"
+  },
   "keywords": [
     "Svelte",
     "HyperCard"
   ],
   "scripts": {
+    "db": "json-server -p 4000 data.json",
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview"
@@ -18,6 +23,7 @@
     "@sveltejs/vite-plugin-svelte": "^1.0.1",
     "axios": "^0.27.2",
     "svelte": "^3.49.0",
-    "vite": "^3.0.0"
+    "vite": "^3.0.0",
+    "json-server": "^0.17.0"
   }
 }

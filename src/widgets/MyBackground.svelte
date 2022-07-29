@@ -13,7 +13,9 @@
             myStack.update(() => {
                 return res.data;
             });
-        } catch (e) {}
+        } catch (e) {
+            console.log(e);
+        }
     });
 
     // export let cardId = 0;
