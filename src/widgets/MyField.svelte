@@ -1,15 +1,15 @@
 <script>
     import { appMode } from "../stores";
 
+    //export const id = crypto.randomUUID();
+    export let id = null;
     export let x = 200;
     export let y = 200;
     export let width = 400;
     export let height = 100;
-    export let content = "empty";
+    export let content = id;
 
     $: editable = $appMode === "field";
-
-    console.log(this);
 
     // MOVE & RESIZE
 

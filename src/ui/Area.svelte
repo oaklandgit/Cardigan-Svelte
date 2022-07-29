@@ -1,6 +1,6 @@
 <script>
     export let pattern = 3;
-    export let height = 600;
+    export let height = 342;
 </script>
 
 <div

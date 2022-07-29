@@ -3,7 +3,7 @@
     import { appMode } from "../stores";
 
     function setMode(mode) {
-        $appMode = mode;
+        appMode.update(() => mode);
     }
 </script>
 

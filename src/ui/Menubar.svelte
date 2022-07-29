@@ -6,18 +6,32 @@
     import MyButton from "../widgets/MyButton.svelte";
     import MyField from "../widgets/MyField.svelte";
     import { myStack, appMode } from "../stores";
+    import { createButton } from "../lib/crud.js";
+    // import axios from "axios";
 
-    function createButton() {
-        // create the button, then switch to button mode
-        $myStack = [
-            ...$myStack,
-            {
-                element: MyButton,
-            },
-        ];
+    // const endpoint = "http://localhost:4000/stack";
 
-        $appMode = "button";
-    }
+    // async function createButton() {
+    //     // create the button, then switch to button mode
+
+    //     const newButton = {
+    //         id: crypto.randomUUID(),
+    //         element: "button",
+    //         label: "New Button",
+    //         x: 100,
+    //         y: 100,
+    //         width: 120,
+    //         height: 40,
+    //         created: new Date().toString,
+    //     };
+
+    //     const response = await axios.post(endpoint, newButton);
+    //     myStack.update((currentStack) => {
+    //         return [...currentStack, newButton];
+    //     });
+
+    //     $appMode = "button";
+    // }
 
     function createField() {
         // create the field, then switch to field mode
@@ -99,6 +113,7 @@
                     label: "New Button",
                     section: true,
                     callback: () => {
+                        $appMode = "button";
                         createButton();
                     },
                 },
@@ -128,11 +143,6 @@
 </div>
 
 <style>
-    @font-face {
-        font-family: Chicago;
-        src: url(/assets/ChicagoFLF.ttf);
-    }
-
     div {
         position: absolute;
         top: 2px;

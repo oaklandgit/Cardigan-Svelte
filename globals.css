@@ -1,0 +1,8 @@
+@font-face {
+    font-family: Chicago;
+    src: url(./assets/ChicagoFLF.ttf);
+}
+
+* {
+    font-family: 'Chicago';
+}
