@@ -25,13 +25,25 @@ export async function createButton() {
 
 }
 
-// export async function saveButton(buttonId, newX, newY, newWidth, newHeight) {
-//     await axios.patch(endpoint + buttonId, {
-//         x: newX,
-//         y: newY,
-//         width: newWidth,
-//         height: newHeight,
-//         updated: +new Date(),
-//     });
+export async function createField() {
 
-// }
+    const newField = {
+        id: crypto.randomUUID(),
+        element: "field",
+        content: "empty",
+        x: 100,
+        y: 100,
+        width: 120,
+        height: 40,
+        created: + new Date(),
+        updated: + new Date()
+    };
+
+    const response = await axios.post(endpoint, newField);
+
+    myStack.update(currentStack => {
+        return [...currentStack, newField];
+    });
+
+}
+

@@ -6,44 +6,7 @@
     import MyButton from "../widgets/MyButton.svelte";
     import MyField from "../widgets/MyField.svelte";
     import { myStack, appMode } from "../stores";
-    import { createButton } from "../lib/crud.js";
-    // import axios from "axios";
-
-    // const endpoint = "http://localhost:4000/stack";
-
-    // async function createButton() {
-    //     // create the button, then switch to button mode
-
-    //     const newButton = {
-    //         id: crypto.randomUUID(),
-    //         element: "button",
-    //         label: "New Button",
-    //         x: 100,
-    //         y: 100,
-    //         width: 120,
-    //         height: 40,
-    //         created: new Date().toString,
-    //     };
-
-    //     const response = await axios.post(endpoint, newButton);
-    //     myStack.update((currentStack) => {
-    //         return [...currentStack, newButton];
-    //     });
-
-    //     $appMode = "button";
-    // }
-
-    function createField() {
-        // create the field, then switch to field mode
-        $myStack = [
-            ...$myStack,
-            {
-                element: MyField,
-            },
-        ];
-
-        $appMode = "field";
-    }
+    import { createButton, createField } from "../lib/crud.js";
 
     export let items = [
         {
@@ -120,6 +83,7 @@
                 {
                     label: "New Field",
                     callback: () => {
+                        $appMode = "field";
                         createField();
                     },
                 },
