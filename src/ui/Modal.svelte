@@ -3,7 +3,7 @@
 </script>
 
 <div class="modal">
-    <div class="titleBar">{title}</div>
+    <div class="titleBar"><span class="title">{title}</span></div>
     <div class="content"><slot /></div>
 </div>
 
@@ -21,7 +21,15 @@
 
     .titleBar {
         text-align: center;
-        padding: 4px 0;
+        background-image: url(/assets/patterns/4.svg);
+        background-position: 0 4px;
+        background-repeat: repeat-x;
+        height: 22px;
+    }
+
+    .title {
+        background-color: #fff;
+        padding: 0 6px;
     }
 
     .content {

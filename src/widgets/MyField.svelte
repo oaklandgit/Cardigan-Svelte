@@ -113,10 +113,11 @@
 <style>
     textarea {
         position: absolute;
-        background-color: white;
+        /* background-color: white; */
         border: 2px solid black;
         resize: none;
         outline: none;
+        background: top left repeat url(/assets/patterns/5.svg);
     }
 
     textarea.editable {

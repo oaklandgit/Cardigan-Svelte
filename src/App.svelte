@@ -1,6 +1,7 @@
 <script>
   import Area from "./ui/Area.svelte";
   import Menubar from "./ui/Menubar.svelte";
+  import Modal from "./ui/Modal.svelte";
   import MyBackground from "./widgets/MyBackground.svelte";
 </script>
 
